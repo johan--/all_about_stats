@@ -2,7 +2,7 @@
 
 one:
   url: "http://apple.com"
-  referrer: nil
+  referrer: 
   payload_hash:
   created_at: '2015-04-29 01:35:23'
 
