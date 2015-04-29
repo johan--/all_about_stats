@@ -1,0 +1,25 @@
+<div class="center_title">
+  <h2> Top Referrers Over the Last 5 Days</h2>
+</div>
+
+<div class="top_referrers">
+  {{#each dates as |date|}}
+    <h2>{{date.date}}</h2>
+      <ul>
+        {{#each date.urls as |url|}}
+          <li>Url: {{url.url}} </li>
+          <li>Visted: {{url.visits}}</li>
+          <li> Referred by:
+            <ul>
+              <li> www.google.com 10 time</li>
+              <li> www.wiki.org 12 times</li>
+            </ul>
+          </li>
+          <br>
+        {{/each}}
+      <br>
+      </ul>
+  {{/each}}
+</div>
+
+ {{outlet}}

@@ -22,7 +22,7 @@ class Seed
   end
 
   def generate_payloads
-    1000.times do |i|
+    1000000.times do |i|
       payload = Payload.create(
       url:       urls.shuffle.first,
       referrer:  referrers.shuffle.first,

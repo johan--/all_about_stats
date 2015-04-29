@@ -1,0 +1,14 @@
+<div class="urls">
+  <h2> Top Urls Over Past 5 Days</h2>
+</div>
+
+<div class="top_urls">
+  {{#each dates as |date|}}
+    <h2>{{date.date}}</h2>
+      <ul>
+        {{#each date.urls as |url|}}
+          <li>URL: {{url.url}}, Visits: {{url.visits}}</li>
+        {{/each}}
+      </ul>
+  {{/each}}
+</div>
