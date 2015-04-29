@@ -11,3 +11,15 @@ two:
   referrer: "http://store.apple.com/us"
   payload_hash:
   created_at: '2015-04-28 01:35:23'
+
+three:
+  url: "http://apple.com"
+  referrer: "http://google.apple.com/us"
+  payload_hash:
+  created_at: '2015-04-29 01:30:23'
+
+four:
+  url: "http://www.apple.com"
+  referrer: nil
+  payload_hash:
+  created_at: '2015-04-29 03:30:23'
