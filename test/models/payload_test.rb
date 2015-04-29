@@ -1,51 +1,28 @@
 require 'test_helper'
 
 class PayloadTest < ActiveSupport::TestCase
-  attr_reader :payload
+  attr_reader :ps
 
   def setup
-    @payload = Payload.new(valid_attributes)
+    @ps = PayloadStats.new
   end
 
-  def valid_attributes
-    { url: "http://apple.com",
-      referrer: "http://store.apple.com/us",
-      created_at: Time.parse('2015-04-28') }
-  end
-  
-  def payload_hash
-    Digest::MD5.hexdigest(payload_string)
-  end
+  test "can produce top urls" do
+    top_urls = ps.top_urls
+    value = top_urls[top_urls.keys[0]][0]
 
-  def payload_string
-    output = "{id:#{payload.id}, url: '#{payload.url}', "
-    output += "referrer: '#{payload.referrer}', " if payload.referrer.present?
-    output += "created_at: '#{payload.created_at}'}"
+    assert_equal Date,               top_urls.keys[0].class
+    assert_equal "http://apple.com", value["url"]
+    assert_equal 2,                  value["visits"]
   end
 
-  test "it creates a payload with a referrer" do
-     payload.save
+  test "it can produce top referrers" do
+    top_referrers = ps.top_referrers
+    value = top_referrers[top_referrers.keys[0]][0]
 
-     assert payload.valid?
-     assert_equal "http://apple.com",           payload.url
-     assert_equal "http://store.apple.com/us",  payload.referrer
-     assert_equal Time.parse('2015-04-28'),     payload.created_at
-     assert_equal payload_hash,                 payload.payload_hash
-  end
-
-  test "it can create a payload without a referrer" do
-     payload.referrer = nil
-     payload.save
-
-     assert payload.valid?
-     assert_equal "http://apple.com",        payload.url
-     assert_equal nil,                       payload.referrer
-     assert_equal Time.parse('2015-04-28'),  payload.created_at
-     assert_equal payload_hash,              payload.payload_hash
-  end
-
-  test "it can not create a payload without a url" do
-     payload.url = nil
-     assert payload.invalid?
+    assert_equal Date,               top_referrers.keys[0].class
+    assert_equal "http://apple.com", value["url"]
+    assert_equal 2,                  value["visits"]
+    assert_equal 1,                  value["referrers"].size
   end
 end
