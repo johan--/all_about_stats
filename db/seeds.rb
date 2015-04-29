@@ -5,18 +5,19 @@ class Seed
 
   def urls
     ["http://apple.com",
-      "https://apple.com",
-      "https://www.apple.com",
-      "http://developer.apple.com",
-      "http://en.wikipedia.org",
-      "http://opensource.org"]
+     "https://apple.com",
+     "https://www.apple.com",
+     "http://developer.apple.com"
+      ]
   end
 
   def referrers
     ["http://apple.com",
-     "https://apple.com",
-     "https://www.apple.com",
-     "http://developer.apple.com",
+    "https://apple.com",
+    "https://www.apple.com",
+    "http://developer.apple.com",
+    "http://en.wikipedia.org",
+    "http://opensource.org",
      nil]
   end
 

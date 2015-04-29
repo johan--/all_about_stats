@@ -7,6 +7,12 @@ class PayloadTest < ActiveSupport::TestCase
     @payload = Payload.new(valid_attributes)
   end
 
+  def valid_attributes
+    { url: "http://apple.com",
+      referrer: "http://store.apple.com/us",
+      created_at: Time.parse('2015-04-28') }
+  end
+  
   def payload_hash
     Digest::MD5.hexdigest(payload_string)
   end
@@ -15,14 +21,6 @@ class PayloadTest < ActiveSupport::TestCase
     output = "{id:#{payload.id}, url: '#{payload.url}', "
     output += "referrer: '#{payload.referrer}', " if payload.referrer.present?
     output += "created_at: '#{payload.created_at}'}"
-  end
-
-  def valid_attributes
-    {
-      url: "http://apple.com",
-      referrer: "http://store.apple.com/us",
-      created_at: Time.parse('2015-04-28')
-    }
   end
 
   test "it creates a payload with a referrer" do
