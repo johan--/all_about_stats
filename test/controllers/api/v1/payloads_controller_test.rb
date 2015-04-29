@@ -22,4 +22,17 @@ class Api::V1::PayloadsControllerTest < ActionController::TestCase
     assert_equal "http://apple.com",          payload["url"]
     assert_equal "http://store.apple.com/us", payload["referrer"]
   end
+
+  test '#create' do
+    assert_difference('Payload.count', 1) do
+      post :create, format: :json,
+      payload: { url: 'https://apple.com/jobs', referrer: "https://google.com" }
+    end
+
+    payload = JSON.parse(response.body)["payload"]
+
+    assert_response :success
+    assert_equal 'https://apple.com/jobs', payload['url']
+    assert_equal 'https://google.com',     payload['referrer']
+  end
 end
