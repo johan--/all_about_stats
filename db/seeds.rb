@@ -1,7 +1,35 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+class Seed
+  def initialize
+     generate_payloads
+  end
+
+  def urls
+    ["http://apple.com",
+      "https://apple.com",
+      "https://www.apple.com",
+      "http://developer.apple.com",
+      "http://en.wikipedia.org",
+      "http://opensource.org"]
+  end
+
+  def referrers
+    ["http://apple.com",
+     "https://apple.com",
+     "https://www.apple.com",
+     "http://developer.apple.com",
+     nil]
+  end
+
+  def generate_payloads
+    1000.times do |i|
+      payload = Payload.create(
+      url:       urls.shuffle.first,
+      referrer:  referrers.shuffle.first,
+      created_at: (DateTime.now() - rand(11))
+      )
+      puts "Payload ##{payload.id} created"
+    end
+  end
+end
+
+Seed.new
