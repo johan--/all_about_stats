@@ -46,4 +46,12 @@ class Api::V1::PayloadsControllerTest < ActionController::TestCase
     assert_equal 'https://apple.com/jobs', payload['url']
     assert_equal nil,                      payload['referrer']
   end
+
+  test '#destroy' do
+    assert_difference('Payload.count', -1) do
+      delete :destroy, format: :json, id: Payload.last
+    end
+
+    assert_response :success
+  end
 end

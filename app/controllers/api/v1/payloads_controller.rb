@@ -15,8 +15,11 @@ class Api::V1::PayloadsController < ApplicationController
    render json: Payload.update(params[:id], payload_params)
   end
 
+  def destroy
+    render json: Payload.destroy(params[:id])
+  end
 
- private
+  private
 
   def payload_params
     params.require(:payload).permit(:url, :referrer)
