@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428174833) do
+ActiveRecord::Schema.define(version: 20150429005826) do
 
   create_table "payloads", force: :cascade do |t|
-    t.string   "url",          limit: 255
+    t.string   "url",          limit: 255, null: false
     t.string   "referrer",     limit: 255
     t.string   "payload_hash", limit: 255
     t.datetime "created_at",               null: false

@@ -1,6 +1,4 @@
 class Payload < ActiveRecord::Base
-  attr_reader :payload_string
-
   validates :url,  presence: true
 
   after_create :generate_payload_hash
@@ -10,8 +8,8 @@ class Payload < ActiveRecord::Base
   end
 
   def payload_string
-    @payload_string = "{id:#{id}, url: '#{url}', "
-    @payload_string += "referrer: '#{referrer}', " if referrer.present?
-    @payload_string += "created_at: '#{created_at}'}"
+    output  = "{id:#{id}, url: '#{url}', "
+    output += "referrer: '#{referrer}', " if referrer.present?
+    output += "created_at: '#{created_at}'}"
   end
 end
