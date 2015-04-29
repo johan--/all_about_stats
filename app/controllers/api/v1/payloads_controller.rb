@@ -19,9 +19,6 @@ class Api::V1::PayloadsController < ApplicationController
     render json: Payload.destroy(params[:id])
   end
 
-  def top_urls
-  end
-
   private
 
   def payload_params
