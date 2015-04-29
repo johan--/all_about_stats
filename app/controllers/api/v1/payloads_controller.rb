@@ -9,7 +9,12 @@ class Api::V1::PayloadsController < ApplicationController
 
   def create
    render json: Payload.create(payload_params)
- end
+  end
+
+  def update
+   render json: Payload.update(params[:id], payload_params)
+  end
+
 
  private
 

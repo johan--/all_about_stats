@@ -35,4 +35,15 @@ class Api::V1::PayloadsControllerTest < ActionController::TestCase
     assert_equal 'https://apple.com/jobs', payload['url']
     assert_equal 'https://google.com',     payload['referrer']
   end
+
+  test '#update' do
+    post :update, format: :json, id: Payload.last,
+    payload: { url: "https://apple.com/jobs", referrer: nil }
+
+    payload = JSON.parse(response.body)["payload"]
+
+    assert_response :success
+    assert_equal 'https://apple.com/jobs', payload['url']
+    assert_equal nil,                      payload['referrer']
+  end
 end
