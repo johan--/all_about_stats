@@ -8,9 +8,9 @@ class Api::V1::PayloadsControllerTest < ActionController::TestCase
     first_payload = payloads.first
 
     assert_response :success
-    assert_equal 2,                           payloads.count
-    assert_equal "http://apple.com",          first_payload["url"]
-    assert_equal "http://store.apple.com/us", first_payload["referrer"]
+    assert_equal 4,                            payloads.count
+    assert_equal "http://apple.com",           first_payload["url"]
+    assert_equal "http://google.apple.com/us", first_payload["referrer"]
   end
 
   test "#show" do
@@ -19,8 +19,8 @@ class Api::V1::PayloadsControllerTest < ActionController::TestCase
     payload = JSON.parse(response.body)["payload"]
 
     assert_response :success
-    assert_equal "http://apple.com",          payload["url"]
-    assert_equal "http://store.apple.com/us", payload["referrer"]
+    assert_equal "http://apple.com",           payload["url"]
+    assert_equal "http://google.apple.com/us", payload["referrer"]
   end
 
   test '#create' do
