@@ -2,11 +2,30 @@
   <h2> Top Urls Over Past 5 Days</h2>
 </div>
 
-<div class="top_urls text-center">
+<div class="row top_urls text-center">
   {{#each dates as |date|}}
-    <h2>{{date.date}}</h2>
-        {{#each date.urls as |url|}}
-          URL: {{url.url}}, Visits: {{url.visits}}<br>
-        {{/each}}
+    <div class="top-day">
+      <h2>{{date.date}}</h2>
+      <table class="table table-condensed table-bordered table-striped">
+        <thead>
+          <tr>
+            <th class="text-center">URL</th>
+            <th class="text-center" >Visit Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each date.urls as |url|}}
+          <tr>
+            <td>
+              <p>{{url.url}}</p>
+            </td>
+            <td>
+              <p>{{url.visits}}</p>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
   {{/each}}
 </div>

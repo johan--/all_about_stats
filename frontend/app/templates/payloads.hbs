@@ -1,7 +1,26 @@
 <h1> Payloads!!! </h1>
 
-<div class="top_urls">
+<table class="payload-table">
+  <tr class="payload-header">
+    <th class="payload-header-url">URL</th>
+    <th class="payload-header-referrer">REFERRER</th>
+    <th class="payload-header-created_at">CREATED AT</th>
+  </tr>
   {{#each model as |payload|}}
-    <h2>{{payload.url}}</h2>
-  {{/each}}
-</div>
+  <tr class="payload-row">
+    <td>
+      <div class="payload-url">
+        <p>{{payload.url}}</p>
+      </div>
+    </td>
+    <td>
+      <div class="payload-referrer">
+        <p>{{payload.referrer}}</p>
+      </div>
+    </td>
+    <td class="payload-created_at">
+      <p>{{payload.created_at}}</p>
+    </td>
+    </tr>
+    {{/each}}
+  </table>

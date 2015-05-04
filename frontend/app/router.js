@@ -8,5 +8,5 @@ var Router = Ember.Router.extend({
 export default Router.map(function() {
   this.resource('urls', { path: '/urls'});
   this.resource('referrers', { path: '/referrers' });
-  this.resource('payloads', { path: '/payloads' })
+  this.resource('payloads', { path: '/payloads' });
 });
