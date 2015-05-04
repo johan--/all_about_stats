@@ -1,22 +1,31 @@
 <div class="text-center">
-  <h2> Top Referrers Over the Last 5 Days</h2>
+  <h2> Top URLS With Their Referrers</h2>
+  <h3> (Over the past 5 days) </h3>
 </div>
 
-<div class="row">
+<div class="row text-center">
   <div class="col-md-4"></div>
   <div class="col-md-4 centered">
   {{data}}
   {{#each dates as |date|}}
-    <h2>{{date.date}}</h2>
+    <h3>{{date.date}}</h3>
         {{#each date.urls as |url|}}
-          <strong>Url:</strong>  {{url.url}} <br>
-          <strong> Visted: </strong> {{url.visits}}<br>
-          <strong> Referrered_by: </strong>
-          <ol>
+          <h4>Url:  {{url.url}} -
+           Visted: {{url.visits}}</h4>
+          <table class="table table-bordered table-striped">
+            <tr>
+              <th class="ref-header-url">Referrer URL</th>
+              <th class="ref-header-visits">Visits</th>
+            </tr>
+            <tbody>
             {{#each url.referrers as |ref|}}
-              <li>  {{ref.url}} Times: {{ref.visists}} </li>
-              {{/each}}
-            </ol>
+              <tr>
+                <td> {{ref.url}} </td>
+                <td> {{ref.visists}} </td>
+              </tr>
+            {{/each}}
+          </tbody>
+          </table>
           <br>
         {{/each}}
       <br>
