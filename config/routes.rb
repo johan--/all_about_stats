@@ -6,6 +6,6 @@ Rails.application.routes.draw do
       get '/top_referrers', to: 'payload_stats#top_referrers'
     end
   end
-  root 'ember#bootstrap'
+  root 'application#index'
   get '/*path' => 'ember#bootstrap'
 end
