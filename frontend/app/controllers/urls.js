@@ -12,5 +12,4 @@ export default Ember.Controller.extend({
       return array;
     }, [])
   }.property('model')
-
 });
