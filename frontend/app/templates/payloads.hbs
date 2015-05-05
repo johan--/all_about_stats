@@ -2,12 +2,12 @@
 
 <table class="table table-bordered table-striped">
   <tr class="payload-header">
-    <th class="payload-header-url">URL</th>
-    <th class="payload-header-referrer">REFERRER</th>
-    <th class="payload-header-created_at">CREATED AT</th>
+    {{sortable-header title="Url" sortProperty="url" action="sortBy"}}
+    {{sortable-header title="Referrer" sortProperty="referrer" action="sortBy"}}
+    {{sortable-header title="Created At" sortProperty="createdAt" action="sortBy"}}
   </tr>
   <tbody>
-  {{#each model as |payload|}}
+  {{#each arrangedContent as |payload|}}
   <tr class="payload-row">
     <td>
       <div class="payload-url">
@@ -20,7 +20,7 @@
       </div>
     </td>
     <td class="payload-created_at">
-      <p>{{payload.created_at}}</p>
+      <p>{{payload.createdAt}}</p>
     </td>
     </tr>
     {{/each}}
