@@ -12,6 +12,7 @@ gem 'active_model_serializers'
 gem 'ember-cli-rails'
 
 group :development, :test do
+  gem 'thin'
   gem 'pry'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
